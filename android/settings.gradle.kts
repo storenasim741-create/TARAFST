@@ -1,34 +1,30 @@
-pluginManagement {
-    def flutterSdkPath = {
-        def properties = new Properties()
-        def file = new File(settingsDir, "local.properties")
-        if (file.exists()) {
-            properties.load(file.newDataInputStream())
-        }
-        def sdkPath = properties.getProperty("flutter.sdk")
-        if (sdkPath == null) {
-            sdkPath = System.getenv("FLUTTER_ROOT")
-        }
-        if (sdkPath == null) {
-            throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in local.properties or with FLUTTER_ROOT environment variable.")
-        }
-        return sdkPath
-    }()
 
-    includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")
-
-    repositories {
-        google()
-        mavenCentral()
-        gradlePluginPortal()
+import java.util.Properties
+pluginManagement { val properties = Properties() val localPropertiesFile = File(settingsDir, "local.properties")
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.inputStream().use {
+        properties.load(it)
     }
 }
 
-plugins {
-    id("dev.flutter.flutter-gradle-plugin") version "1.0.0" apply false
-    id("com.android.application") version "8.1.0" apply false
-    id("org.jetbrains.kotlin.android") version "1.8.22" apply false
-    id("com.google.gms.google-services") version "4.4.0" apply false
+var flutterSdkPath = properties.getProperty("flutter.sdk")
+
+if (flutterSdkPath == null) {
+    flutterSdkPath = System.getenv("FLUTTER_ROOT")
 }
 
+require(flutterSdkPath != null) {
+    "Flutter SDK not found. Define flutter.sdk in local.properties or FLUTTER_ROOT."
+}
+
+includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")
+
+repositories {
+    google()
+    mavenCentral()
+    gradlePluginPortal()
+}
+
+}
+plugins { id("dev.flutter.flutter-plugin-loader") version "1.0.0" id("com.android.application") version "8.1.0" apply false id("org.jetbrains.kotlin.android") version "1.8.22" apply false id("com.google.gms.google-services") version "4.4.0" apply false }
 include(":app")
