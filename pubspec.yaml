@@ -1,0 +1,45 @@
+name: taraf_store
+description: Taraf Store - A professional WebView Flutter application with Firebase Messaging.
+version: 1.0.0+1
+publish_to: 'none'
+
+environment:
+  sdk: '>=3.4.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  webview_flutter: ^4.14.0
+  webview_flutter_android: ^3.16.0
+  url_launcher: ^6.3.0
+  connectivity_plus: ^6.0.0
+  firebase_core: ^3.0.0
+  firebase_messaging: ^15.0.0
+  flutter_local_notifications: ^17.0.0
+  permission_handler: ^11.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  flutter_native_splash: ^2.4.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/icon.png"
+
+flutter_native_splash:
+  color: "#ffffff"
+  image: "assets/images/splash.png"
+  android_12:
+    image: "assets/images/splash.png"
+    color: "#ffffff"
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
