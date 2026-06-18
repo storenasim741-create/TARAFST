@@ -1,45 +1,34 @@
-name: taraf_store
-description: Taraf Store - A professional WebView Flutter application with Firebase Messaging.
-version: 1.0.0+1
-publish_to: 'none'
+name: flutter_webview_plugin
+description: Plugin that allow Flutter to communicate with a native Webview.
+authors:
+- Hadrien Lejard <hadrien.lejard@gmail.com>
+- Toufik Zitouni <toufiksapps@gmail.com>
+- Pedia <kpedia@163.com>
+- Simon Lightfoot <simon@devangels.london>
+- Rafal Wachol <gorudonu@gmail.com>
+- Misir Jafarov <misir@fonibo.com>
+homepage: https://github.com/dart-flitter/flutter_webview_plugin
+version: 0.4.0 
+
 
 environment:
-  sdk: '>=3.4.0 <4.0.0'
+  sdk: '>=2.12.0 <3.0.0'
+  flutter: ">=2.0.0"
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.flutter_webview_plugin
+        pluginClass: FlutterWebviewPlugin
+      ios:
+        pluginClass: FlutterWebviewPlugin
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_localizations:
-    sdk: flutter
-  webview_flutter: ^4.14.0
-  webview_flutter_android: ^4.12.0
-  url_launcher: ^6.3.0
-  connectivity_plus: ^6.0.0
-  firebase_core: ^3.0.0
-  firebase_messaging: ^15.0.0
-  flutter_local_notifications: ^17.0.0
-  permission_handler: ^11.3.0
 
 dev_dependencies:
+  mocktail: ^0.1.1
   flutter_test:
     sdk: flutter
-  flutter_lints: ^4.0.0
-  flutter_native_splash: ^2.4.0
-  flutter_launcher_icons: ^0.13.1
-
-flutter_icons:
-  android: true
-  ios: true
-  image_path: "assets/images/icon.png"
-
-flutter_native_splash:
-  color: "#ffffff"
-  image: "assets/images/splash.png"
-  android_12:
-    image: "assets/images/splash.png"
-    color: "#ffffff"
-
-flutter:
-  uses-material-design: true
-  assets:
-    - assets/images/
